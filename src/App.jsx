@@ -41,7 +41,7 @@ export default function App() {
       <Routes>
         <>
         <Route path="/" element={<Dashboard people={people} employees={employees}/>}/>
-        <Route path="/view/:id" element={<PersonProfile people={people} hire={hirePerson}/>} />
+        <Route path="/view/:id" element={<PersonProfile people={people}/>} />
         </>
       </Routes>
     </>
