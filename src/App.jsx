@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import Dashboard from './pages/Dashboard'
 import PersonProfile from './pages/PersonProfile/index.jsx';
@@ -6,10 +7,24 @@ import PersonProfile from './pages/PersonProfile/index.jsx';
 import { Routes, Route, Link } from 'react-router-dom'
 
 export default function App() {
-  const [hiredPeople, setHiredPeople] = useState([])
 
-  const hirePerson = (newHire) => {
-    setHiredPeople([...hiredPeople, newHire])
+  const [people, setPeople] = useState([])
+
+  const getPeople = () => {
+    const baseURL = "https://randomuser.me/api"
+    const endpoint = "/?results=50"
+
+    fetch(baseURL+endpoint)
+      .then(response => response.json())
+      .then((data) => setPeople(data.results))
+  }
+
+  useEffect(getPeople, [])
+
+  const [employees, setEmployees] = useState([])
+
+  const hirePerson = (newEmployee) => {
+    setEmployees([...employees, newEmployee])
   }
 
   return (
@@ -22,12 +37,11 @@ export default function App() {
             <li><Link to="/hired">Your team</Link></li>
           </ul>
         </nav>
-        <Dashboard />
       </header>
       <Routes>
         <>
-        <Route path="/" element={<Dashboard />}/>
-        <Route path="/view/:id" element={<PersonProfile />} />
+        <Route path="/" element={<Dashboard people={people} employees={employees}/>}/>
+        <Route path="/view/:id" element={<PersonProfile people={people} hire={hirePerson}/>} />
         </>
       </Routes>
     </>
