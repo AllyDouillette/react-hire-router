@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import Dashboard from './pages/Dashboard'
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
@@ -11,6 +12,7 @@ export default function App() {
         <nav>
           <ul>
             <li>Dashboard</li>
+            <Dashboard />
           </ul>
         </nav>
       </header>
