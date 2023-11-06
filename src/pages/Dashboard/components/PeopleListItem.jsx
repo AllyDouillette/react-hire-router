@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 
 function PeopleListItem(props) {
   const { person } = props
-  console.log(person)
   const navigate = useNavigate()
   return (
     <li>
@@ -12,7 +11,7 @@ function PeopleListItem(props) {
         {person.name.first} {person.name.last}
       </h3>
       {person.wage && <p>Wage: £{person.wage}</p>}
-      <button onClick={() => navigate(`/view/${person.login.username}`)}>View Details</button>
+      <button onClick={() => navigate(`/view/${person.login.username}`)}>{person.wage === undefined ? "View Details" : "Edit Details"}</button>
     </li>
   )
 }

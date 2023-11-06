@@ -20,7 +20,6 @@ export default function App() {
   }
 
   useEffect(getPeople, [])
-  const [employees, setEmployees] = useState([])
 
   return (
     <>
@@ -35,8 +34,8 @@ export default function App() {
       </header>
       <Routes>
         <>
-        <Route path="/" element={<Dashboard people={people} employees={employees}/>}/>
-        <Route path="/view/:id" element={<PersonProfile people={people} setEmployees={setEmployees} employees={employees}/>} />
+        <Route path="/" element={<Dashboard people={people} />}/>
+        <Route path="/view/:id" element={<PersonProfile people={people} setPeople={setPeople}/>} />
         </>
       </Routes>
     </>
