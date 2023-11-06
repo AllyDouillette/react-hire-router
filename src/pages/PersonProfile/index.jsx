@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import HireForm from './components/HireForm'
 import { useParams } from 'react-router-dom'
 
-function PersonProfile({people}) {
+function PersonProfile({people, setEmployees, employees}) {
   // people is just all people
   const {id} = useParams()
 
@@ -10,7 +10,6 @@ function PersonProfile({people}) {
   const [person, setPerson] = useState(null)
 
   const findPerson = () => {
-    people.forEach(entry => console.log(entry.login.username))
     setPerson(people.find(entry => entry.login.username === id))
   }
 
@@ -24,7 +23,7 @@ function PersonProfile({people}) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm person={person} setEmployees={setEmployees} employees={employees} />
     </article>
   )
 }

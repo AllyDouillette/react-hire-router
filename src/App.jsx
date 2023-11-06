@@ -20,12 +20,7 @@ export default function App() {
   }
 
   useEffect(getPeople, [])
-
   const [employees, setEmployees] = useState([])
-
-  const hirePerson = (newEmployee) => {
-    setEmployees([...employees, newEmployee])
-  }
 
   return (
     <>
@@ -41,7 +36,7 @@ export default function App() {
       <Routes>
         <>
         <Route path="/" element={<Dashboard people={people} employees={employees}/>}/>
-        <Route path="/view/:id" element={<PersonProfile people={people}/>} />
+        <Route path="/view/:id" element={<PersonProfile people={people} setEmployees={setEmployees} employees={employees}/>} />
         </>
       </Routes>
     </>
