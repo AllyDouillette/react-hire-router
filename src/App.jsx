@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import './App.css'
 import Dashboard from './pages/Dashboard'
 import PersonProfile from './pages/PersonProfile/index.jsx';
+import Hired from './pages/YourTeam/index.jsx';
 
 import { Routes, Route, Link } from 'react-router-dom'
 
@@ -35,6 +36,7 @@ export default function App() {
       <Routes>
         <>
         <Route path="/" element={<Dashboard people={people} />}/>
+        <Route path="/hired" element={<Hired people={people} />}/>
         <Route path="/view/:id" element={<PersonProfile people={people} setPeople={setPeople}/>} />
         </>
       </Routes>
