@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 
 function HireForm({person, setPeople, people }) {
 
-  console.log(person, people.length)
   const [wage, setWage] = useState(0)
   const navigate = useNavigate()
 
@@ -15,12 +14,11 @@ function HireForm({person, setPeople, people }) {
       alert("A livable wage is estimated to be around 12 GBP, Scrooge McDuck. I'm gonna fix that for you.")
     }
     
-    const correctWage = wage < 12 ? (12 + Math.random()*5).toFixed(2) : wage.toFixed(2)
+    const correctWage = wage < 12 ? (12 + Math.random()*5).toFixed(2) : Number(wage).toFixed(2)
     setWage(correctWage)
 
     setPeople(people.map(individual => {
       if (individual === person) {
-        console.log("adjusted wage for", individual)
         return {
           ...individual,
           "wage": correctWage
